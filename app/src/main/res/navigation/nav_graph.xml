@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/HomeFragment">
+
+    <fragment
+        android:id="@+id/HomeFragment"
+        android:name="com.asos_codetest.spaceflightapp.view.fragment.HomeFragment"
+        android:label="@string/falcon_9_launches_text"
+        tools:layout="@layout/fragment_home">
+
+        <action
+            android:id="@+id/action_homeFragment_to_flightDetailsFragment"
+            app:destination="@id/FlightDetailsFragment"
+             />
+    </fragment>
+    <fragment
+        android:id="@+id/FlightDetailsFragment"
+        android:name="com.asos_codetest.spaceflightapp.view.fragment.FlightDetailsFragment"
+        android:label="@string/falcon_9_launches_details"
+        tools:layout="@layout/fragment_flight_details">
+
+<!--        <action-->
+<!--            android:id="@+id/action_SecondFragment_to_FirstFragment"-->
+<!--            app:destination="@id/CharacterList_Fragment" />-->
+        <argument
+            android:name="selectedFlight"
+            app:argType="com.asos_codetest.spaceflightapp.model.flight.Flight"
+            />
+        <action
+            android:id="@+id/action_FlightrDetails_Fragment_to_Home_Fragment"
+            app:destination="@id/HomeFragment" />
+
+    </fragment>
+</navigation>

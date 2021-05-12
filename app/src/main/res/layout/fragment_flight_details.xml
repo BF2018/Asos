@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/FlightDetail_Fragment_Layout">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.asos_codetest.spaceflightapp.viewmodel.FlightDetailsViewModel" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context=".SecondFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="60dp"
+            >
+
+            <TextView
+                android:id="@+id/text_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_margin="5dp"
+                android:textAlignment="center"
+                android:background="@drawable/textview_border"
+                android:text="@{viewModel.selectedFlight.name}"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="DemoSat" />
+
+<!--            <ImageView-->
+<!--                android:id="@+id/image"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="0dp"-->
+<!--                android:layout_margin="5dp"-->
+<!--                android:scaleType="centerCrop"-->
+<!--                app:imageUrl="@{viewModel.selectedFlight.links.badge.small}"-->
+<!--                app:layout_constraintDimensionRatio="h,4:5"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/text_name"-->
+<!--                tools:srcCompat="@tools:sample/avatars" />-->
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="15dp"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@id/text_name">
+
+                <TextView
+                    android:id="@+id/details"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{`Details : `+ viewModel.selectedFlight.details}"
+                    android:textColor="@color/grey"
+                    android:textSize="20sp"
+                    tools:text="Details" />
+                <TextView
+                    android:id="@+id/media"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Media"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    tools:text="Media" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="15dp"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@id/linearLayout">
+
+                <ImageButton
+                    android:id="@+id/youtube"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginRight="15dp"
+                    android:src="@drawable/ic_youtube"
+                    android:background="@color/black"
+                    tools:ignore="OnClick" />
+                <ImageButton
+                    android:id="@+id/wiki"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/ic_wiki"
+                    android:background="@color/black"
+                    tools:text="Nick name" />
+            </LinearLayout>
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

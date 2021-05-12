@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="flight"
+            type="com.asos_codetest.spaceflightapp.model.flight.Flight" />
+        <variable
+            name="resultsCallback"
+            type="com.asos_codetest.spaceflightapp.view.adapter.FlightClick" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:cardBackgroundColor="@color/cardview_light_background"
+        app:cardElevation="8dp"
+        app:cardCornerRadius="15dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            
+            <ImageView
+                android:id="@+id/flight_badge_imageview"
+                tools:src="@android:drawable/star_big_on"
+                app:loadBadge="@{flight.links.badge.small}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_margin="10dp"
+                android:layout_width="120dp"
+                android:layout_height="100dp"/>
+            
+            <TextView
+                android:id="@+id/flight_title_textview"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:text="Flight Name"
+                android:text="@{flight.name}"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/flight_badge_imageview"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_margin="7dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/launch_date_textview"
+                android:textSize="16sp"
+                tools:text="Flight Date"
+                android:text="@{flight.date_utc}"
+                app:layout_constraintTop_toBottomOf="@id/flight_title_textview"
+                app:layout_constraintStart_toEndOf="@id/flight_badge_imageview"
+                android:layout_margin="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/mission_success_textview"
+                android:textSize="16sp"
+                android:text="@string/mission_success_text"
+                app:layout_constraintTop_toBottomOf="@id/launch_date_textview"
+                app:layout_constraintStart_toEndOf="@id/flight_badge_imageview"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_margin="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:id="@+id/mission_success_imageview"
+                tools:src="@drawable/ic_success"
+                app:loadImage="@{flight.success}"
+                app:layout_constraintStart_toEndOf="@id/mission_success_textview"
+                app:layout_constraintTop_toTopOf="@id/mission_success_textview"
+                app:layout_constraintBottom_toBottomOf="@id/mission_success_textview"
+                android:layout_marginStart="5dp"
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:contentDescription="@string/app_name" />
+
+            <View
+                android:id="@+id/clickableOverlay"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="?attr/selectableItemBackground"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:onClick="@{() -> resultsCallback.onClick(flight)}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</layout>
