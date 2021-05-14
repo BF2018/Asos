@@ -9,4 +9,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="spacex">SpaceX</string>
+    <string name="sort">Sort</string>
+    <string name="des">DES</string>
+    <string name="asc">ASC</string>
 </resources>

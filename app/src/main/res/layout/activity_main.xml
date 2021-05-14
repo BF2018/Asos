@@ -22,20 +22,12 @@
             app:popupTheme="@style/AppTheme.PopupOverlay"/>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <TextView
-        android:id="@+id/spacex"
-        android:text="@string/spacex"
-        android:textSize="36sp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintStart_toStartOf="parent"
+    <include
+        layout="@layout/content_main"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/appBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <FrameLayout
-        android:id="@+id/container_frame"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/spacex"/>
-    <include layout="@layout/content_main" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appBar" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -38,15 +38,13 @@ class FlightViewModel(
     get() = _loadingState
 
     lateinit var allItemSearch : LiveData<List<Flight>>
-    var itemSearch =  MutableLiveData<String?>()
-/*
+    var itemSearch =  MutableLiveData("%")
 
     init {
         allItemSearch = Transformations.switchMap(itemSearch) {search->
-
+           flightRepository.getSearchedItem(search)
         }
     }
-*/
 
     /**
      * Create a coroutine scoped to this ViewModel class

@@ -2,6 +2,7 @@ package com.asos_codetest.spaceflightapp.repository
 
 import android.util.Log
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.asos_codetest.spaceflightapp.model.companyinfo.Company
 import com.asos_codetest.spaceflightapp.model.db.CompanyDao
 import com.asos_codetest.spaceflightapp.model.db.FlightDao
@@ -77,12 +78,14 @@ class FlightRepository(
     val companyInfo = companyDao.getCompanyInfo()
 
 
-
     /**
      * For searching flight
      * */
-    /*fun getSearchedItem(filter : String) : LiveData<List<Flight>>{
-        return flightDao
-    }*/
+    fun getSearchedItem(filter : String) : LiveData<List<Flight>> {
+        val data = MutableLiveData<List<Flight>>()
+        data.postValue(flightDao.getAllFlights().value?.
+        flightReponse?.filter {it.date_utc == filter })
+        return data
+    }
 }
 

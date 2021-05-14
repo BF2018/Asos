@@ -25,9 +25,6 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment)
         appBarConfiguration = AppBarConfiguration(navController.graph)
 
-        /*filterBtn.setOnClickListener {
-            filterDialog = FilterDialog()
-        }*/
         // This line is only necessary if using the default action bar.
         setupActionBarWithNavController(navController, appBarConfiguration)
       //  loadFragment()
@@ -38,12 +35,7 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
-//    private fun loadFragment() {
-//        supportFragmentManager
-//            .beginTransaction()
-//            .add(R.id.container_frame, HomeFragment())
-//            .commit()
-//    }
+
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
        menuInflater.inflate(R.menu.filter_item,menu)
@@ -57,7 +49,7 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    fun showFilterDialog() : FilterDialog {
+    private fun showFilterDialog() : FilterDialog {
         return FilterDialog.instance.also { dialog->
             supportFragmentManager.let { manager->
                 dialog.show(manager, FilterDialog::class.java.name)
