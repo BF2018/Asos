@@ -27,7 +27,10 @@ class MainActivity : AppCompatActivity() {
 
         // This line is only necessary if using the default action bar.
         setupActionBarWithNavController(navController, appBarConfiguration)
-      //  loadFragment()
+
+        filterBtn.setOnClickListener {
+            filterDialog = showFilterDialog()
+        }
 
     }
     override fun onSupportNavigateUp(): Boolean {
@@ -36,18 +39,6 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-       menuInflater.inflate(R.menu.filter_item,menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.filterIcon){
-           filterDialog = showFilterDialog()
-        }
-        return true
-    }
 
     private fun showFilterDialog() : FilterDialog {
         return FilterDialog.instance.also { dialog->

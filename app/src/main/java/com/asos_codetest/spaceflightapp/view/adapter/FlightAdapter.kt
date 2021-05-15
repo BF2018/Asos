@@ -9,7 +9,7 @@ import com.asos_codetest.spaceflightapp.model.flight.Flight
 /**
  * Class is used to provide flight data to the Adapter and display it in a RecyclerView
  */
-class FlightAdapter(val callback: FlightClick) : RecyclerView.Adapter<FlightViewHolder>(){
+class FlightAdapter(private val callback: FlightClick) : RecyclerView.Adapter<FlightViewHolder>(){
 
     var flightDataList = emptyList<Flight>()
     set(value) {

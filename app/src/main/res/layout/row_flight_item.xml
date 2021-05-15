@@ -60,10 +60,20 @@
                 android:layout_height="wrap_content"/>
 
             <TextView
+                android:id="@+id/rocket_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{flight.rocket}"
+                tools:text="Rocket Name"
+                android:layout_margin="10dp"
+                app:layout_constraintStart_toEndOf="@id/flight_badge_imageview"
+                app:layout_constraintTop_toBottomOf="@id/launch_date_textview"/>
+
+            <TextView
                 android:id="@+id/mission_success_textview"
                 android:textSize="16sp"
                 android:text="@string/mission_success_text"
-                app:layout_constraintTop_toBottomOf="@id/launch_date_textview"
+                app:layout_constraintTop_toBottomOf="@id/rocket_name"
                 app:layout_constraintStart_toEndOf="@id/flight_badge_imageview"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_margin="10dp"
@@ -82,10 +92,20 @@
                 android:layout_height="30dp"
                 android:contentDescription="@string/app_name" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{flight.isSinceOrFrom()}"
+                tools:text="now - launch date"
+                android:layout_marginVertical="10dp"
+                app:layout_constraintStart_toStartOf="@id/mission_success_textview"
+                app:layout_constraintTop_toBottomOf="@id/mission_success_textview" />
+
             <View
                 android:id="@+id/clickableOverlay"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                tools:visibility="gone"
                 android:background="?attr/selectableItemBackground"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:onClick="@{() -> resultsCallback.onClick(flight)}"

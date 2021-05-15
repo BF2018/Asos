@@ -33,11 +33,4 @@ interface FlightDao {
     @Query(DELETE_ALL_FLIGHTS_QUERY)
     fun deleteAllFlights()
 
-    /**
-     * Dao Query with filter for search functionality
-     * */
-   /* @Query("SELECT * FROM FlightResponse where name  " )
-    fun getSearchedItems(filter : String) : LiveData<List<Flight>>*/
-
-
 }

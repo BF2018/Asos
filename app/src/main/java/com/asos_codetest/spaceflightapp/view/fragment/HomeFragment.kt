@@ -80,14 +80,21 @@ class HomeFragment : Fragment(){
     private fun setupObservers(){
         setupCompanyObserver()
 
-        flightViewModel.flightData.observe(viewLifecycleOwner, Observer {
+        flightViewModel.flightData.observe(requireActivity(), Observer {
             it?.flightReponse?.let { flights->
                 flightAdapter.flightDataList = flights
             }
 
         })
 
-        flightViewModel.loadingState.observe(viewLifecycleOwner, Observer {
+        /*flightViewModel.allItemSearch.observe(requireActivity(),Observer{flights->
+            flights?.let {
+                flightAdapter.flightDataList = it
+            }
+
+        })*/
+
+        flightViewModel.loadingState.observe(requireActivity(), Observer {
             when(it.status){
                 LoadingState.Status.RUNNING -> showSnackBar("Loading Flight Data")
                 LoadingState.Status.SUCCESS -> showSnackBar("Data Loaded Successfully")
@@ -99,7 +106,7 @@ class HomeFragment : Fragment(){
 
     @SuppressLint("SetTextI18n")
     private fun setupCompanyObserver(){
-        flightViewModel.companyInfo?.observe(viewLifecycleOwner, Observer { company->
+        flightViewModel.companyInfo?.observe(requireActivity(), Observer { company->
             company?.let { companyInfo->
                 val companyName = if (companyInfo.name == null){
                     ""

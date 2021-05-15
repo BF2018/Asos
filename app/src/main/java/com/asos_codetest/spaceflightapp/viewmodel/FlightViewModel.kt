@@ -37,14 +37,14 @@ class FlightViewModel(
     val loadingState: LiveData<LoadingState>
     get() = _loadingState
 
-    lateinit var allItemSearch : LiveData<List<Flight>>
+   // var allItemSearch : LiveData<List<Flight>>
     var itemSearch =  MutableLiveData("%")
 
-    init {
+    /*init {
         allItemSearch = Transformations.switchMap(itemSearch) {search->
            flightRepository.getSearchedItem(search)
         }
-    }
+    }*/
 
     /**
      * Create a coroutine scoped to this ViewModel class
@@ -109,8 +109,10 @@ class FlightViewModel(
     fun searchFlight(newSearch : String){
         val filter = when {
             newSearch.isEmpty() -> "%"
-            else -> "%$newSearch%"
+            else -> newSearch
         }
-        itemSearch.postValue(filter)
+            //flightData.value.filter {it.date_utc == filter }
+      // allItemSearch = flightRepository.getSearchedItem(filter)
+        //itemSearch.postValue(filter)
     }
 }
